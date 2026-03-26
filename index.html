@@ -1518,6 +1518,85 @@
           font-size: 1.2rem;
         }
       }
+      .cookie-banner {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--olive-dark);
+        color: rgba(255, 255, 255, 0.85);
+        padding: 16px 24px;
+        z-index: 10000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+        font-size: 0.82rem;
+        line-height: 1.6;
+        box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.15);
+      }
+      .cookie-banner.visible {
+        display: flex;
+      }
+      .cookie-banner a {
+        color: var(--gold-light);
+        text-decoration: underline;
+      }
+      .cookie-banner-buttons {
+        display: flex;
+        gap: 8px;
+        flex-shrink: 0;
+      }
+      .cookie-btn {
+        padding: 8px 20px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        font-family: inherit;
+        transition: var(--transition);
+      }
+      .cookie-btn-accept {
+        background: var(--gold);
+        color: var(--olive-dark);
+      }
+      .cookie-btn-accept:hover {
+        background: var(--gold-light);
+      }
+      .cookie-btn-decline {
+        background: transparent;
+        color: rgba(255, 255, 255, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      .cookie-btn-decline:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .form-consent {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        margin-top: 4px;
+      }
+      .form-consent input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        min-width: 16px;
+        margin-top: 2px;
+        accent-color: var(--gold);
+        cursor: pointer;
+      }
+      .form-consent label {
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.45);
+        line-height: 1.5;
+        cursor: pointer;
+      }
+      .form-consent label a {
+        color: rgba(255, 255, 255, 0.6);
+        text-decoration: underline;
+      }
     </style>
   </head>
   <body>
@@ -2775,10 +2854,19 @@
                 <button type="submit" class="btn btn-dark btn-lg">
                   Отправить заявку
                 </button>
-                <p class="form-note">
-                  Нажимая кнопку, вы соглашаетесь с обработкой персональных
-                  данных
-                </p>
+                <div class="form-consent">
+                  <input type="checkbox" id="consent" required />
+                  <label for="consent"
+                    >Даю
+                    <a href="privacy.html" target="_blank"
+                      >согласие на обработку персональных данных</a
+                    >
+                    в соответствии с ФЗ №152 и принимаю
+                    <a href="privacy.html" target="_blank"
+                      >политику конфиденциальности</a
+                    ></label
+                  >
+                </div>
               </form>
             </div>
           </div>
@@ -2797,6 +2885,9 @@
             <a href="#houses">Дома</a>
             <a href="#lifestyle">Клубная жизнь</a>
             <a href="#location">Как добраться</a>
+            <a href="privacy.html" target="_blank"
+              >Политика конфиденциальности</a
+            >
           </div>
           <div class="footer-right">
             <a href="tel:+79295647969" class="footer-phone"
@@ -2950,6 +3041,40 @@
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") closeMobile();
       });
+    </script>
+    <div class="cookie-banner" id="cookieBanner">
+      <span
+        >Мы используем cookie для улучшения работы сайта. Продолжая, вы
+        соглашаетесь с
+        <a href="privacy.html" target="_blank">политикой конфиденциальности</a
+        >.</span
+      >
+      <div class="cookie-banner-buttons">
+        <button class="cookie-btn cookie-btn-accept" onclick="acceptCookies()">
+          Принять
+        </button>
+        <button
+          class="cookie-btn cookie-btn-decline"
+          onclick="declineCookies()"
+        >
+          Отклонить
+        </button>
+      </div>
+    </div>
+    <script>
+      function acceptCookies() {
+        localStorage.setItem("cookieConsent", "accepted");
+        document.getElementById("cookieBanner").classList.remove("visible");
+      }
+      function declineCookies() {
+        localStorage.setItem("cookieConsent", "declined");
+        document.getElementById("cookieBanner").classList.remove("visible");
+      }
+      if (!localStorage.getItem("cookieConsent")) {
+        setTimeout(function () {
+          document.getElementById("cookieBanner").classList.add("visible");
+        }, 1500);
+      }
     </script>
   </body>
 </html>
