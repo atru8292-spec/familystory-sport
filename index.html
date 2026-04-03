@@ -8,7 +8,7 @@
     </title>
     <meta
       name="description"
-      content="Первый спортивный посёлок бизнес-класса. Дома от 8 млн ₽, участки с подрядом. Беговые дорожки, корты, клубное сообщество. 30 минут от Тулы."
+      content="Первый спортивный посёлок бизнес-класса. Дома от 6,4 млн ₽, участки с подрядом. Беговые дорожки, корты, клубное сообщество. 30 минут от Тулы."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
@@ -1597,6 +1597,84 @@
         color: rgba(255, 255, 255, 0.6);
         text-decoration: underline;
       }
+     .house-slider {
+        position: relative;
+        overflow: hidden;
+        height: 450px;
+      }
+      .house-slider-track {
+        display: flex;
+        transition: transform 0.4s ease;
+        height: 450px;
+      }
+      .house-slide {
+        min-width: 100%;
+        height: 450px;
+      }
+      .house-slide img {
+        width: 100%;
+        height: 450px;
+        object-fit: cover;
+        object-position: center;
+      }
+      .house-slider-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(8px);
+        color: #fff;
+        border: none;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1.1rem;
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+      }
+      .house-slider-btn:hover {
+        background: rgba(0, 0, 0, 0.6);
+      }
+      .house-slider-btn.prev {
+        left: 12px;
+      }
+      .house-slider-btn.next {
+        right: 12px;
+      }
+      .house-slider-dots {
+        position: absolute;
+        bottom: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 6px;
+        z-index: 3;
+      }
+      .house-slider-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        border: none;
+        cursor: pointer;
+        transition: var(--transition);
+        padding: 0;
+      }
+      .house-slider-dot.active {
+        background: #fff;
+      }
+      @media (max-width: 768px) {
+        .house-slider,
+        .house-slider-track,
+        .house-slide,
+        .house-slide img {
+          height: 260px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -1686,7 +1764,7 @@
               <div class="hero-stat-label">дорожка для бега и&nbsp;вело</div>
             </div>
             <div class="hero-stat-card">
-              <div class="hero-stat-num">от 8 млн</div>
+              <div class="hero-stat-num">от 6,4 млн</div>
               <div class="hero-stat-label">дом + участок под&nbsp;ключ</div>
             </div>
           </div>
@@ -1885,10 +1963,7 @@
               <img src="https://i.ibb.co/tM76BZ51/DJI-0901.jpg" alt="Дома" />
             </div>
             <div class="infra-photo" style="aspect-ratio: 1">
-              <img
-                src="https://i.ibb.co/vvhJ45hh/photo-2024-07-11-22-15-48.jpg"
-                alt="Природа"
-              />
+              <img src="https://i.ibb.co/DPXzfLMt/6.jpg" alt="Природа" />
             </div>
             <div
               class="infra-hand-note"
@@ -2006,10 +2081,54 @@
         <div class="houses-list">
           <div class="house-card fade-up">
             <div class="house-image">
-              <img
-                src="https://i.ibb.co/DPV4tVQJ/DJI-0874.jpg"
-                alt="Дом 65 м²"
-              /><span class="house-badge">Популярный выбор</span
+              <div class="house-slider" data-slider>
+                <div class="house-slider-track">
+                  <div class="house-slide">
+                    <img
+                      src="https://optim.tildacdn.com/tild6334-3465-4530-b738-353739613931/-/format/webp/100034.jpg.webp"
+                      alt="Кедр"
+                    />
+                  </div>
+                  <div class="house-slide">
+                    <img
+                      src="https://i.ibb.co/MwhgKdh/30-11-6.jpg"
+                      alt="Кедр 2"
+                    />
+                  </div>
+                  <div class="house-slide">
+                    <img
+                      src="https://i.ibb.co/HDfhWzvb/30-11-14.jpg"
+                      alt="Кедр 3"
+                    />
+                  </div>
+                </div>
+                <button
+                  class="house-slider-btn prev"
+                  onclick="slideHouse(this,-1)"
+                >
+                  &#8249;</button
+                ><button
+                  class="house-slider-btn next"
+                  onclick="slideHouse(this,1)"
+                >
+                  &#8250;
+                </button>
+                <div class="house-slider-dots">
+                  <button
+                    class="house-slider-dot active"
+                    onclick="goSlide(this,0)"
+                  ></button
+                  ><button
+                    class="house-slider-dot"
+                    onclick="goSlide(this,1)"
+                  ></button
+                  ><button
+                    class="house-slider-dot"
+                    onclick="goSlide(this,2)"
+                  ></button>
+                </div>
+              </div>
+              <span class="house-badge">Популярный выбор</span
               ><span class="house-hand"
                 >уютный для двоих
                 <svg viewBox="0 0 30 30">
@@ -2028,7 +2147,7 @@
               ></span>
             </div>
             <div class="house-info">
-              <div class="house-name">Дом 65 м²</div>
+              <div class="house-name">Дом 65 м² «Кедр»</div>
               <div class="house-tagline">
                 Уютный дом для пары или небольшой семьи — всё необходимое на
                 одном этаже, терраса с видом на лес
@@ -2063,7 +2182,7 @@
               <div class="house-line"></div>
               <div class="house-bottom">
                 <div class="house-price">
-                  от 8 000 000 ₽<small>дом + участок + коммуникации</small>
+                  от 6 390 000 ₽<small>дом + участок + коммуникации</small>
                 </div>
                 <a
                   href="#cta"
@@ -2076,10 +2195,54 @@
           </div>
           <div class="house-card fade-up">
             <div class="house-image">
-              <img
-                src="https://i.ibb.co/vCGcwJ78/DJI-0876.jpg"
-                alt="Дом 90 м²"
-              /><span class="house-hand"
+              <div class="house-slider" data-slider>
+                <div class="house-slider-track">
+                  <div class="house-slide">
+                    <img
+                      src="https://optim.tildacdn.com/tild3335-3363-4862-b065-346631623131/-/format/webp/2.jpeg.webp"
+                      alt="Каштан"
+                    />
+                  </div>
+                  <div class="house-slide">
+                    <img
+                      src="https://optim.tildacdn.com/tild3330-6264-4837-a135-386434313965/-/format/webp/k2.jpg.webp"
+                      alt="Каштан 2"
+                    />
+                  </div>
+                  <div class="house-slide">
+                    <img
+                      src="https://optim.tildacdn.com/tild6433-3961-4337-a434-386462616366/-/format/webp/k3.jpg.webp"
+                      alt="Каштан 3"
+                    />
+                  </div>
+                </div>
+                <button
+                  class="house-slider-btn prev"
+                  onclick="slideHouse(this,-1)"
+                >
+                  &#8249;</button
+                ><button
+                  class="house-slider-btn next"
+                  onclick="slideHouse(this,1)"
+                >
+                  &#8250;
+                </button>
+                <div class="house-slider-dots">
+                  <button
+                    class="house-slider-dot active"
+                    onclick="goSlide(this,0)"
+                  ></button
+                  ><button
+                    class="house-slider-dot"
+                    onclick="goSlide(this,1)"
+                  ></button
+                  ><button
+                    class="house-slider-dot"
+                    onclick="goSlide(this,2)"
+                  ></button>
+                </div>
+              </div>
+              <span class="house-hand"
                 >для семьи с детьми
                 <svg viewBox="0 0 30 30">
                   <path
@@ -2097,7 +2260,7 @@
               ></span>
             </div>
             <div class="house-info">
-              <div class="house-name">Дом 90 м²</div>
+              <div class="house-name">Дом 77 м² «Каштан»</div>
               <div class="house-tagline">
                 Просторный дом для семьи — отдельные комнаты для каждого,
                 большая гостиная и кухня-столовая
@@ -2106,14 +2269,14 @@
                 <div class="house-spec">
                   <svg viewBox="0 0 24 24">
                     <rect x="3" y="3" width="18" height="18" rx="2"></rect></svg
-                  >90 м²
+                  >77 м²
                 </div>
                 <div class="house-spec">
                   <svg viewBox="0 0 24 24">
                     <path
                       d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
                     ></path></svg
-                  >3 спальни
+                  >2–3 спальни
                 </div>
                 <div class="house-spec">
                   <svg viewBox="0 0 24 24">
@@ -2132,7 +2295,7 @@
               <div class="house-line"></div>
               <div class="house-bottom">
                 <div class="house-price">
-                  от 10 000 000 ₽<small>дом + участок + коммуникации</small>
+                  от 7 990 000 ₽<small>дом + участок + коммуникации</small>
                 </div>
                 <a
                   href="#cta"
@@ -2145,10 +2308,54 @@
           </div>
           <div class="house-card fade-up">
             <div class="house-image">
-              <img
-                src="https://i.ibb.co/LX3RpZfC/DJI-0885.jpg"
-                alt="Дом 120 м²"
-              /><span class="house-badge">Максимум простора</span
+              <div class="house-slider" data-slider>
+                <div class="house-slider-track">
+                  <div class="house-slide">
+                    <img
+                      src="https://optim.tildacdn.com/tild6530-3038-4065-a561-663761396534/-/format/webp/photo.jpg.webp"
+                      alt="Баобаб"
+                    />
+                  </div>
+                  <div class="house-slide">
+                    <img
+                      src="https://optim.tildacdn.com/tild3734-3139-4865-b330-616237376233/-/format/webp/1.jpg.webp"
+                      alt="Баобаб 2"
+                    />
+                  </div>
+                  <div class="house-slide">
+                    <img
+                      src="https://optim.tildacdn.com/tild3931-3231-4835-a364-383931353561/-/format/webp/photo.jpg.webp"
+                      alt="Баобаб 3"
+                    />
+                  </div>
+                </div>
+                <button
+                  class="house-slider-btn prev"
+                  onclick="slideHouse(this,-1)"
+                >
+                  &#8249;</button
+                ><button
+                  class="house-slider-btn next"
+                  onclick="slideHouse(this,1)"
+                >
+                  &#8250;
+                </button>
+                <div class="house-slider-dots">
+                  <button
+                    class="house-slider-dot active"
+                    onclick="goSlide(this,0)"
+                  ></button
+                  ><button
+                    class="house-slider-dot"
+                    onclick="goSlide(this,1)"
+                  ></button
+                  ><button
+                    class="house-slider-dot"
+                    onclick="goSlide(this,2)"
+                  ></button>
+                </div>
+              </div>
+              <span class="house-badge">Максимум простора</span
               ><span class="house-hand"
                 >мечта большой семьи
                 <svg viewBox="0 0 30 30">
@@ -2167,7 +2374,7 @@
               ></span>
             </div>
             <div class="house-info">
-              <div class="house-name">Дом 120 м²</div>
+              <div class="house-name">Дом 103 м² «Баобаб»</div>
               <div class="house-tagline">
                 Большой семейный дом с четырьмя спальнями — максимум простора,
                 приватности и комфорта
@@ -2176,21 +2383,21 @@
                 <div class="house-spec">
                   <svg viewBox="0 0 24 24">
                     <rect x="3" y="3" width="18" height="18" rx="2"></rect></svg
-                  >120 м²
+                  >103 м²
                 </div>
                 <div class="house-spec">
                   <svg viewBox="0 0 24 24">
                     <path
                       d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
                     ></path></svg
-                  >4 спальни
+                  >3–4 спальни
                 </div>
                 <div class="house-spec">
                   <svg viewBox="0 0 24 24">
                     <path
                       d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
                     ></path></svg
-                  >Участок 10 соток
+                  >Участок от 8 соток
                 </div>
                 <div class="house-spec">
                   <svg viewBox="0 0 24 24">
@@ -2202,7 +2409,7 @@
               <div class="house-line"></div>
               <div class="house-bottom">
                 <div class="house-price">
-                  от 12 000 000 ₽<small>дом + участок + коммуникации</small>
+                  от 9 990 000 ₽<small>дом + участок + коммуникации</small>
                 </div>
                 <a
                   href="#cta"
@@ -2213,7 +2420,6 @@
               </div>
             </div>
           </div>
-        </div>
 
         <!-- Аренда -->
         <div class="houses-rent fade-up">
@@ -2617,10 +2823,7 @@
             </div>
           </div>
           <div class="life-item fade-up">
-            <img
-              src="https://i.ibb.co/vvhJ45hh/photo-2024-07-11-22-15-48.jpg"
-              alt="Природа"
-            />
+            <img src="https://i.ibb.co/DPXzfLMt/6.jpg" alt="Природа" />
             <div class="life-overlay">
               <h4>Природа рядом</h4>
               <p>Каждый день как мини-отпуск</p>
@@ -3048,7 +3251,34 @@
           card.querySelector(".form-sub").style.display = "";
         }, 6000);
       }
-
+      function slideHouse(btn, dir) {
+        var s = btn.closest("[data-slider]");
+        var t = s.querySelector(".house-slider-track");
+        var dots = s.querySelectorAll(".house-slider-dot");
+        var total = s.querySelectorAll(".house-slide").length;
+        var cur = 0;
+        dots.forEach(function (d, i) {
+          if (d.classList.contains("active")) cur = i;
+        });
+        cur += dir;
+        if (cur < 0) cur = total - 1;
+        if (cur >= total) cur = 0;
+        t.style.transform = "translateX(-" + cur * 100 + "%)";
+        dots.forEach(function (d) {
+          d.classList.remove("active");
+        });
+        dots[cur].classList.add("active");
+      }
+      function goSlide(dot, idx) {
+        var s = dot.closest("[data-slider]");
+        var t = s.querySelector(".house-slider-track");
+        var dots = s.querySelectorAll(".house-slider-dot");
+        t.style.transform = "translateX(-" + idx * 100 + "%)";
+        dots.forEach(function (d) {
+          d.classList.remove("active");
+        });
+        dots[idx].classList.add("active");
+      }
       function showError() {
         alert("Произошла ошибка. Позвоните нам: +7 (929) 564-79-69");
       }
