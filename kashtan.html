@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Дом «Каштан» 77 м² — Family Story</title>
+    <meta
+      name="description"
+      content="Просторный дом 77 м² для семьи с детьми. 2-3 спальни, высокие потолки до 3.28 м, адаптирован для маломобильных. От 7 590 000 ₽. Посёлок Family Story."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏡</text></svg>"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700&family=Caveat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        --cream: #faf8f4;
+        --olive: #3d5a3e;
+        --olive-dark: #2c4330;
+        --gold: #c9a96e;
+        --gold-light: #ddc99e;
+        --white: #fff;
+        --text: #2a2a28;
+        --text-light: #6b6b65;
+        --border: rgba(0, 0, 0, 0.07);
+        --shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.08);
+        --radius: 20px;
+        --radius-sm: 14px;
+        --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        color: var(--text);
+        line-height: 1.65;
+        background: var(--cream);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+      .container {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Playfair Display", serif;
+        line-height: 1.15;
+        font-weight: 700;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px 28px;
+        border-radius: 50px;
+        font-size: 0.88rem;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        transition: var(--transition);
+        font-family: inherit;
+      }
+      .btn-dark {
+        background: var(--olive);
+        color: #fff !important;
+      }
+      .btn-dark:hover {
+        background: var(--olive-dark);
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(61, 90, 62, 0.25);
+      }
+      .btn-outline {
+        background: transparent;
+        color: var(--olive);
+        border: 1.5px solid rgba(61, 90, 62, 0.3);
+      }
+      .btn-outline:hover {
+        background: var(--olive);
+        color: #fff;
+      }
+      .btn-lg {
+        padding: 16px 36px;
+        font-size: 0.95rem;
+      }
+      .top-bar {
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        padding: 16px 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .top-bar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .top-bar-logo {
+        font-family: "Playfair Display", serif;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--olive-dark);
+      }
+      .top-bar-nav {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        font-size: 0.85rem;
+      }
+      .top-bar-nav a {
+        color: var(--text-light);
+        transition: var(--transition);
+      }
+      .top-bar-nav a:hover {
+        color: var(--text);
+      }
+      .top-bar-phone {
+        font-weight: 700;
+        color: var(--text);
+      }
+      .house-hero {
+        padding: 40px 0 0;
+      }
+      .house-hero-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 48px;
+        align-items: start;
+      }
+      .house-gallery {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        border-radius: var(--radius);
+        overflow: hidden;
+      }
+      .house-gallery-main {
+        grid-column: span 2;
+        aspect-ratio: 16/9;
+        overflow: hidden;
+      }
+      .house-gallery-main img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        cursor: pointer;
+        transition: transform 0.4s ease;
+      }
+      .house-gallery-main img:hover {
+        transform: scale(1.03);
+      }
+      .house-gallery-thumb {
+        aspect-ratio: 4/3;
+        overflow: hidden;
+      }
+      .house-gallery-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        cursor: pointer;
+        transition: transform 0.4s ease;
+        border-radius: var(--radius-sm);
+      }
+      .house-gallery-thumb img:hover {
+        transform: scale(1.05);
+      }
+      .house-hero-info h1 {
+        font-size: 2.2rem;
+        margin-bottom: 8px;
+        color: var(--text);
+      }
+      .house-hero-info h1 span {
+        color: var(--olive);
+      }
+      .house-hero-tagline {
+        font-size: 1rem;
+        color: var(--text-light);
+        line-height: 1.8;
+        margin-bottom: 24px;
+      }
+      .house-hero-price {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 4px;
+      }
+      .house-hero-price-sub {
+        font-size: 0.82rem;
+        color: var(--text-light);
+        margin-bottom: 28px;
+      }
+      .house-hero-specs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-bottom: 28px;
+      }
+      .house-hero-spec {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 16px;
+        background: var(--white);
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--border);
+        font-size: 0.88rem;
+        color: var(--text);
+      }
+      .house-hero-spec svg {
+        width: 20px;
+        height: 20px;
+        stroke: var(--olive);
+        stroke-width: 1.8;
+        fill: none;
+        flex-shrink: 0;
+      }
+      .house-hero-btns {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .house-desc {
+        padding: 80px 0;
+        background: var(--white);
+      }
+      .house-desc-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 56px;
+        align-items: center;
+      }
+      .house-desc-text h2 {
+        font-size: 1.6rem;
+        margin-bottom: 16px;
+      }
+      .house-desc-text h2 em {
+        font-style: italic;
+        color: var(--olive);
+      }
+      .house-desc-text p {
+        font-size: 0.95rem;
+        color: var(--text-light);
+        line-height: 1.85;
+        margin-bottom: 16px;
+      }
+      .house-desc-img {
+        border-radius: var(--radius);
+        overflow: hidden;
+      }
+      .house-desc-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .house-details {
+        padding: 80px 0;
+        background: var(--cream);
+      }
+      .house-details h2 {
+        font-size: 1.6rem;
+        margin-bottom: 32px;
+        text-align: center;
+      }
+      .house-details h2 em {
+        font-style: italic;
+        color: var(--olive);
+      }
+      .accordion {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .accordion-item {
+        border-bottom: 1px solid var(--border);
+        background: var(--white);
+        margin-bottom: 8px;
+        border-radius: var(--radius-sm);
+        overflow: hidden;
+      }
+      .accordion-btn {
+        width: 100%;
+        text-align: left;
+        padding: 20px 24px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: var(--transition);
+      }
+      .accordion-btn:hover {
+        color: var(--olive);
+      }
+      .accordion-btn::after {
+        content: "+";
+        font-size: 1.4rem;
+        color: var(--olive);
+        transition: var(--transition);
+      }
+      .accordion-item.open .accordion-btn::after {
+        content: "−";
+      }
+      .accordion-body {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease;
+      }
+      .accordion-item.open .accordion-body {
+        max-height: 800px;
+      }
+      .accordion-body-inner {
+        padding: 0 24px 20px;
+        font-size: 0.88rem;
+        color: var(--text-light);
+        line-height: 1.8;
+      }
+      .accordion-body-inner ul {
+        padding-left: 20px;
+        margin: 8px 0;
+      }
+      .accordion-body-inner li {
+        margin-bottom: 4px;
+      }
+      .house-photos {
+        padding: 80px 0;
+        background: var(--white);
+      }
+      .house-photos h2 {
+        font-size: 1.6rem;
+        margin-bottom: 32px;
+        text-align: center;
+      }
+      .house-photos h2 em {
+        font-style: italic;
+        color: var(--olive);
+      }
+      .photos-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+      .photos-grid img {
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        transition: transform 0.4s ease;
+        border: 1px solid var(--border);
+      }
+      .photos-grid img:hover {
+        transform: scale(1.04);
+      }
+      .house-cta {
+        padding: 80px 0;
+        background: linear-gradient(135deg, var(--olive-dark) 0%, #1a3325 100%);
+        text-align: center;
+        color: #fff;
+      }
+      .house-cta h2 {
+        font-size: 1.8rem;
+        margin-bottom: 12px;
+        color: #fff;
+      }
+      .house-cta h2 em {
+        font-style: italic;
+        color: var(--gold-light);
+      }
+      .house-cta p {
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.75);
+        margin-bottom: 28px;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .house-cta .btn {
+        margin: 0 8px 8px;
+      }
+      .footer {
+        background: #1a2b1e;
+        color: rgba(255, 255, 255, 0.5);
+        padding: 36px 0 24px;
+        text-align: center;
+        font-size: 0.82rem;
+      }
+      .footer a {
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .footer-phone {
+        color: #fff;
+        font-weight: 600;
+        font-size: 0.95rem;
+        display: block;
+        margin-bottom: 8px;
+      }
+      @media (max-width: 1024px) {
+        .house-hero-grid {
+          grid-template-columns: 1fr;
+        }
+        .house-desc-grid {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+      }
+      @media (max-width: 768px) {
+        .house-hero-info h1 {
+          font-size: 1.6rem;
+        }
+        .house-hero-price {
+          font-size: 1.5rem;
+        }
+        .house-hero-specs {
+          grid-template-columns: 1fr;
+        }
+        .house-gallery {
+          grid-template-columns: 1fr;
+        }
+        .house-gallery-main {
+          grid-column: span 1;
+        }
+        .photos-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 8px;
+        }
+        .top-bar-nav {
+          display: none;
+        }
+        .house-cta h2 {
+          font-size: 1.4rem;
+        }
+      }
+      @media (max-width: 480px) {
+        .house-hero-info h1 {
+          font-size: 1.4rem;
+        }
+        .photos-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top-bar">
+      <div class="container">
+        <div class="top-bar-inner">
+          <a href="index.html" class="top-bar-logo">← Family Story</a>
+          <div class="top-bar-nav">
+            <a href="index.html#houses">Все дома</a>
+            <a href="kedr.html">Кедр 65 м²</a>
+            <a href="baobab.html">Баобаб 103 м²</a>
+            <a href="tel:+79295647969" class="top-bar-phone"
+              >+7 (929) 564-79-69</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="house-hero">
+      <div class="container">
+        <div class="house-hero-grid">
+          <div class="house-gallery">
+            <div class="house-gallery-main">
+              <img
+                src="https://static.tildacdn.com/tild3230-6132-4465-b436-383763303431/image_33.jpg"
+                alt="Дом Каштан — вид снаружи"
+              />
+            </div>
+            <div class="house-gallery-thumb">
+              <img
+                src="https://static.tildacdn.com/tild3666-3537-4237-b162-366535636332/image_35.jpg"
+                alt="Каштан — вид"
+              />
+            </div>
+            <div class="house-gallery-thumb">
+              <img
+                src="https://static.tildacdn.com/tild6135-3239-4739-b634-386532363263/image_36.jpg"
+                alt="Каштан — ракурс"
+              />
+            </div>
+            <div class="house-gallery-thumb">
+              <img
+                src="https://static.tildacdn.com/tild3338-3564-4265-b864-363466366131/image_37.jpg"
+                alt="Каштан — деталь"
+              />
+            </div>
+            <div class="house-gallery-thumb">
+              <img
+                src="https://static.tildacdn.com/tild6438-6532-4131-a433-306436626632/image_38.jpg"
+                alt="Каштан — интерьер"
+              />
+            </div>
+          </div>
+          <div class="house-hero-info">
+            <h1>Дом 77 м² <span>«Каштан»</span></h1>
+            <p class="house-hero-tagline">
+              Просторный дом для семьи с детьми — у каждого своя комната,
+              высокие потолки наполняют светом, а на веранде поместится вся
+              семья за ужином.
+            </p>
+            <div class="house-hero-price">7 590 000 ₽</div>
+            <div class="house-hero-price-sub">
+              дом + участок + коммуникации · готов за 30 дней
+            </div>
+            <div class="house-hero-specs">
+              <div class="house-hero-spec">
+                <svg viewBox="0 0 24 24">
+                  <rect x="3" y="3" width="18" height="18" rx="2"></rect></svg
+                >77.3 м² жилая
+              </div>
+              <div class="house-hero-spec">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                  ></path></svg
+                >2–3 спальни
+              </div>
+              <div class="house-hero-spec">
+                <svg viewBox="0 0 24 24">
+                  <rect x="2" y="7" width="20" height="5" rx="1"></rect>
+                  <path
+                    d="M4 12v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6"
+                  ></path></svg
+                >Веранда 9.5×3 м
+              </div>
+              <div class="house-hero-spec">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
+                  ></path></svg
+                >Застройка 120.2 м²
+              </div>
+              <div class="house-hero-spec">
+                <svg viewBox="0 0 24 24">
+                  <polyline
+                    points="22 12 18 12 15 21 9 3 6 12 2 12"
+                  ></polyline></svg
+                >Потолки до 3.28 м
+              </div>
+              <div class="house-hero-spec">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline></svg
+                >Монтаж за 30 дней
+              </div>
+            </div>
+            <div class="house-hero-btns">
+              <a href="index.html#cta" class="btn btn-dark btn-lg"
+                >Оставить заявку на этот дом</a
+              >
+              <a href="index.html#cta" class="btn btn-outline btn-lg"
+                >Получить планировку в PDF</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="house-desc">
+      <div class="container">
+        <div class="house-desc-grid">
+          <div class="house-desc-text">
+            <h2>Почему выбирают <em>«Каштан»</em></h2>
+            <p>
+              Этот дом создан для семей, которым нужно больше пространства — но
+              без лишнего. Каждый квадратный метр продуман: большая
+              кухня-гостиная для вечерних посиделок, отдельные спальни для детей
+              и родителей, и прихожая, которая легко становится кабинетом.
+            </p>
+            <p>
+              «Каштан» — первый дом серии с увеличенной шириной модулей. Это
+              значит по-настоящему высокие потолки до 3.28 м и ощущение
+              простора, которого не ожидаешь от загородного дома.
+            </p>
+            <p>
+              Отдельная гордость — адаптация для маломобильных: широкие двери и
+              разворотная площадка в санузле. Этот дом подходит всем.
+            </p>
+            <p><strong>Идеально для семьи 3–5 человек.</strong></p>
+          </div>
+          <div class="house-desc-img">
+            <img
+              src="https://static.tildacdn.com/tild3534-3239-4863-a538-653561313236/Group_1.jpg"
+              alt="Планировка Каштан"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="house-details">
+      <div class="container">
+        <h2>Подробности о доме <em>«Каштан»</em></h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-btn" onclick="toggleAccordion(this)">
+              Размеры дома
+            </button>
+            <div class="accordion-body">
+              <div class="accordion-body-inner">
+                <ul>
+                  <li>Жилая площадь: 77.3 м²</li>
+                  <li>Площадь застройки: 120.2 м²</li>
+                  <li>Габариты: 3.95 × 9.52 × 13.2 м</li>
+                  <li>Потолки: от 1.85 до 3.28 м</li>
+                </ul>
+                <p>
+                  <strong>Важно:</strong> из-за увеличенных модулей ширина
+                  дороги/ворот — минимум 3.6 м, высота до проводов — 4.5 м.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-btn" onclick="toggleAccordion(this)">
+              Что включено в стоимость
+            </button>
+            <div class="accordion-body">
+              <div class="accordion-body-inner">
+                <p>
+                  <strong>Каркас:</strong> массив дерева хвойных пород,
+                  утепление 200 мм по всему периметру, веранда 9.5×3 м.
+                </p>
+                <p>
+                  <strong>Отделка:</strong> внешняя — чёрный профлист RAL 9005 +
+                  дерево с трёх сторон. Внутренняя — белый массив дерева,
+                  межкомнатные двери белого цвета, ванная — плитка + дерево.
+                </p>
+                <p>
+                  <strong>Остекление:</strong> деревянные рамы, двухкамерные
+                  стеклопакеты, панорамное закалённое остекление по боковому
+                  фасаду.
+                </p>
+                <p>
+                  <strong>Коммуникации:</strong> водопровод, канализация,
+                  электрика, освещение.
+                </p>
+                <p>
+                  <strong>Оборудование:</strong> тёплые полы в ванной,
+                  умывальник, ванна, смесители, унитаз, бойлер 100 л, печь-камин
+                  Finn с дымоходом, снегозадержатели, водосток, греющий кабель.
+                </p>
+                <p>
+                  <em
+                    >Мебель, техника, предметы интерьера не входят в
+                    стоимость.</em
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-btn" onclick="toggleAccordion(this)">
+              Особенности модели
+            </button>
+            <div class="accordion-body">
+              <div class="accordion-body-inner">
+                <ul>
+                  <li>
+                    Панорамное остекление — максимум света и единения с природой
+                  </li>
+                  <li>
+                    Увеличенные модули — больше простора и высоты потолков
+                  </li>
+                  <li>Удобная мастер-спальня с отдельной зоной</li>
+                  <li>
+                    Адаптирован для маломобильных — широкие двери, разворотная
+                    площадка в санузле
+                  </li>
+                  <li>Компактный камин с большим стеклом — тепло и красиво</li>
+                  <li>Единое пространство гостиной без столбов</li>
+                  <li>Планировка L или R — выберите ориентацию остекления</li>
+                </ul>
+                <p>
+                  <strong>Важно:</strong> вносить изменения в проект нельзя.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-btn" onclick="toggleAccordion(this)">
+              Стоимость: из чего складывается
+            </button>
+            <div class="accordion-body">
+              <div class="accordion-body-inner">
+                <ul>
+                  <li>Домокомплект: 7 370 000 ₽</li>
+                  <li>Монтаж: 220 000 ₽</li>
+                </ul>
+                <p>
+                  <strong>Дополнительно:</strong> фундамент, доставка модулей,
+                  кран, подвод коммуникаций, вывоз мусора.
+                </p>
+                <p>
+                  <strong>Опционально:</strong> ограждение веранды, терраса у
+                  входа, лестница.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="house-photos">
+      <div class="container">
+        <h2>Как выглядит <em>«Каштан»</em> внутри и снаружи</h2>
+        <div class="photos-grid">
+          <img
+            loading="lazy"
+            src="https://static.tildacdn.com/tild6438-6532-4131-a433-306436626632/image_38.jpg"
+            alt="Гостиная"
+          />
+          <img
+            loading="lazy"
+            src="https://static.tildacdn.com/tild3963-6439-4538-b838-303563356461/image_39.jpg"
+            alt="Кухня"
+          />
+          <img
+            loading="lazy"
+            src="https://static.tildacdn.com/tild3135-3430-4563-a138-353330363261/image_40.jpg"
+            alt="Спальня"
+          />
+          <img
+            loading="lazy"
+            src="https://static.tildacdn.com/tild6235-3964-4833-b362-396537663834/image_41.jpg"
+            alt="Детская"
+          />
+          <img
+            loading="lazy"
+            src="https://static.tildacdn.com/tild3766-3938-4138-b564-616666383362/image_42.jpg"
+            alt="Санузел"
+          />
+          <img
+            loading="lazy"
+            src="https://static.tildacdn.com/tild6130-3564-4133-b031-616338333331/image_43.jpg"
+            alt="Вид снаружи"
+          />
+          <img
+            loading="lazy"
+            src="https://static.tildacdn.com/tild3039-6537-4337-b662-343162373838/image_44.jpg"
+            alt="Веранда"
+          />
+          <img
+            loading="lazy"
+            src="https://static.tildacdn.com/tild6533-3139-4264-a637-386630306633/image_45.jpg"
+            alt="Фасад"
+          />
+          <img
+            loading="lazy"
+            src="https://static.tildacdn.com/tild3265-6666-4433-b737-633862393537/image_34.jpg"
+            alt="Панорама"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="house-cta">
+      <div class="container">
+        <h2>Хотите узнать больше о <em>«Каштане»</em>?</h2>
+        <p>
+          Оставьте заявку — отправим планировку, расчёт и фото построенных
+          домов. Или запишитесь на просмотр посёлка.
+        </p>
+        <a href="index.html#cta" class="btn btn-dark btn-lg">Оставить заявку</a>
+        <a
+          href="tel:+79295647969"
+          class="btn btn-outline btn-lg"
+          style="color: #fff; border-color: rgba(255, 255, 255, 0.3)"
+          >Позвонить</a
+        >
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <a href="tel:+79295647969" class="footer-phone">+7 (929) 564-79-69</a>
+        <span
+          >Family Story · Тульская область, Дубенский р-н, с. Новое
+          Павшино</span
+        ><br /><br />
+        <a href="index.html">← Вернуться на главную</a> &nbsp;·&nbsp;
+        <a href="kedr.html">Кедр 65 м²</a> &nbsp;·&nbsp;
+        <a href="baobab.html">Баобаб 103 м²</a> &nbsp;·&nbsp;
+        <a href="privacy.html">Политика конфиденциальности</a>
+      </div>
+    </footer>
+
+    <script>
+      function toggleAccordion(btn) {
+        var item = btn.parentElement;
+        var wasOpen = item.classList.contains("open");
+        document.querySelectorAll(".accordion-item").forEach(function (el) {
+          el.classList.remove("open");
+        });
+        if (!wasOpen) item.classList.add("open");
+      }
+    </script>
+  </body>
+</html>
