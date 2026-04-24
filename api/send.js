@@ -13,13 +13,11 @@ export default async function handler(req, res) {
     }
 
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT),
-      secure: Number(process.env.SMTP_PORT) === 465,
+      service: "gmail",
       auth: {
         user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
+        pass: process.env.SMTP_PASS
+      }
     });
 
     await transporter.sendMail({
@@ -33,7 +31,7 @@ export default async function handler(req, res) {
         <p><strong>Email:</strong> ${email || "не указан"}</p>
         <p><strong>Интерес:</strong> ${interest}</p>
         <p><strong>Комментарий:</strong><br>${message || "нет комментария"}</p>
-      `,
+      `
     });
 
     return res.status(200).json({ message: "Заявка отправлена" });
