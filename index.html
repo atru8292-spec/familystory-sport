@@ -3911,36 +3911,51 @@
             <div class="form-title">Оставьте заявку</div>
             <div class="form-sub">Ответим в течение 15 минут</div>
             <form
-  class="form"
-  id="mainForm"
-  action="https://formspree.io/f/xykllwrr"
-  method="POST"
-  onsubmit="return submitForm(event)"
->
-  <input type="text" name="name" placeholder="Ваше имя" required />
-  <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required />
-  <select name="interest" required>
-    <option value="" disabled selected>Что вас интересует?</option>
-    <option value="Получить презентацию">Получить презентацию</option>
-    <option value="Записаться на экскурсию">Записаться на экскурсию</option>
-    <option value="Выбор дома и участка">Выбор дома и участка</option>
-    <option value="Аренда дома на пробу">Аренда дома на пробу</option>
-    <option value="Инвестиционный формат">Инвестиционный формат</option>
-  </select>
-  <input type="hidden" name="_subject" value="🏡 Новая заявка с Family Story" />
-  <input type="text" name="_gotcha" style="display:none" />
-  <div class="form-consent">
-    <input type="checkbox" id="consent" required />
-    <label for="consent">
-      Я согласен на обработку
-      <a href="#" target="_blank">персональных данных</a> и
-      ознакомлен с
-      <a href="#" target="_blank">политикой конфиденциальности</a>
-    </label>
-  </div>
-  <button type="submit" class="btn btn-dark">Отправить заявку</button>
-  <div class="form-note">Нажимая на кнопку, вы подтверждаете согласие с условиями</div>
-</form>
+            class="form"
+            id="mainForm"
+            action="https://formspree.io/f/mwvaypry"
+            method="POST"
+            onsubmit="return submitForm(event)"
+          >
+            <input type="text" name="name" placeholder="Ваше имя" required />
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required />
+            <input type="email" name="email" placeholder="Ваш email" />
+            
+            <select name="interest" required>
+              <option value="" disabled selected>Что вас интересует?</option>
+              <option value="Получить презентацию">Получить презентацию</option>
+              <option value="Записаться на экскурсию">Записаться на экскурсию</option>
+              <option value="Выбор дома и участка">Выбор дома и участка</option>
+              <option value="Аренда дома на пробу">Аренда дома на пробу</option>
+              <option value="Инвестиционный формат">Инвестиционный формат</option>
+            </select>
+          
+            <textarea
+              name="message"
+              placeholder="Комментарий"
+              rows="4"
+              style="width: 100%; padding: 15px 18px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.18); background: rgba(255, 255, 255, 0.08); color: #fff; font-size: 0.92rem; font-family: inherit; resize: vertical;"
+            ></textarea>
+          
+            <input type="hidden" name="_subject" value="🏡 Новая заявка с Family Story" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="text" name="_gotcha" style="display:none" />
+          
+            <div class="form-consent">
+              <input type="checkbox" id="consent" required />
+              <label for="consent">
+                Я согласен на обработку
+                <a href="privacy.html" target="_blank">персональных данных</a>
+                и ознакомлен с
+                <a href="privacy.html" target="_blank">политикой конфиденциальности</a>
+              </label>
+            </div>
+          
+            <button type="submit" class="btn btn-dark">Отправить заявку</button>
+            <div class="form-note">
+              Нажимая на кнопку, вы подтверждаете согласие с условиями
+            </div>
+          </form>
           </div>
         </div>
       </div>
