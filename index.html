@@ -3911,51 +3911,54 @@
             <div class="form-title">Оставьте заявку</div>
             <div class="form-sub">Ответим в течение 15 минут</div>
             <form
-            class="form"
-            id="mainForm"
-            action="https://formspree.io/f/mwvaypry"
-            method="POST"
-            onsubmit="return submitForm(event)"
-          >
-            <input type="text" name="name" placeholder="Ваше имя" required />
-            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required />
-            <input type="email" name="email" placeholder="Ваш email" />
-            
-            <select name="interest" required>
-              <option value="" disabled selected>Что вас интересует?</option>
-              <option value="Получить презентацию">Получить презентацию</option>
-              <option value="Записаться на экскурсию">Записаться на экскурсию</option>
-              <option value="Выбор дома и участка">Выбор дома и участка</option>
-              <option value="Аренда дома на пробу">Аренда дома на пробу</option>
-              <option value="Инвестиционный формат">Инвестиционный формат</option>
-            </select>
-          
-            <textarea
-              name="message"
-              placeholder="Комментарий"
-              rows="4"
-              style="width: 100%; padding: 15px 18px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.18); background: rgba(255, 255, 255, 0.08); color: #fff; font-size: 0.92rem; font-family: inherit; resize: vertical;"
-            ></textarea>
-          
-            <input type="hidden" name="_subject" value="🏡 Новая заявка с Family Story" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="text" name="_gotcha" style="display:none" />
-          
-            <div class="form-consent">
-              <input type="checkbox" id="consent" required />
-              <label for="consent">
-                Я согласен на обработку
-                <a href="privacy.html" target="_blank">персональных данных</a>
-                и ознакомлен с
-                <a href="privacy.html" target="_blank">политикой конфиденциальности</a>
-              </label>
-            </div>
-          
-            <button type="submit" class="btn btn-dark">Отправить заявку</button>
-            <div class="form-note">
-              Нажимая на кнопку, вы подтверждаете согласие с условиями
-            </div>
-          </form>
+  class="form"
+  id="mainForm"
+  action="https://api.web3forms.com/submit"
+  method="POST"
+  onsubmit="return submitForm(event)"
+>
+  <input type="hidden" name="access_key" value="a4fefedf-65ce-4039-a920-b61a363ec192" />
+  <input type="hidden" name="subject" value="🏡 Новая заявка с Family Story" />
+  <input type="hidden" name="from_name" value="Family Story — сайт" />
+
+  <input type="text" name="name" placeholder="Ваше имя" required />
+  <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required />
+  <input type="email" name="email" placeholder="Ваш email" />
+
+  <select name="interest" required>
+    <option value="" disabled selected>Что вас интересует?</option>
+    <option value="Получить презентацию">Получить презентацию</option>
+    <option value="Записаться на экскурсию">Записаться на экскурсию</option>
+    <option value="Выбор дома и участка">Выбор дома и участка</option>
+    <option value="Аренда дома на пробу">Аренда дома на пробу</option>
+    <option value="Инвестиционный формат">Инвестиционный формат</option>
+  </select>
+
+  <textarea
+    name="message"
+    placeholder="Комментарий"
+    rows="4"
+    style="width: 100%; padding: 15px 18px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.18); background: rgba(255, 255, 255, 0.08); color: #fff; font-size: 0.92rem; font-family: inherit; resize: vertical;"
+  ></textarea>
+
+  <!-- Honeypot антиспам -->
+  <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+
+  <div class="form-consent">
+    <input type="checkbox" id="consent" required />
+    <label for="consent">
+      Я согласен на обработку
+      <a href="privacy.html" target="_blank">персональных данных</a>
+      и ознакомлен с
+      <a href="privacy.html" target="_blank">политикой конфиденциальности</a>
+    </label>
+  </div>
+
+  <button type="submit" class="btn btn-dark">Отправить заявку</button>
+  <div class="form-note">
+    Нажимая на кнопку, вы подтверждаете согласие с условиями
+  </div>
+</form>
           </div>
         </div>
       </div>
@@ -4091,13 +4094,21 @@ async function submitForm(e) {
   btn.disabled = true;
 
   try {
-    const response = await fetch("https://formspree.io/f/mwvaypry", {
+    const formData = new FormData(form);
+    const json = JSON.stringify(Object.fromEntries(formData));
+
+    const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
-      body: new FormData(form),
-      headers: { Accept: "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: json,
     });
 
-    if (response.ok) {
+    const result = await response.json();
+
+    if (response.ok && result.success) {
       btn.textContent = "✓ Заявка отправлена";
       btn.style.background = "#c9a96e";
       if (typeof ym !== "undefined") {
@@ -4110,7 +4121,7 @@ async function submitForm(e) {
         btn.style.background = "";
       }, 3000);
     } else {
-      throw new Error("Ошибка");
+      throw new Error(result.message || "Ошибка");
     }
   } catch (err) {
     btn.textContent = "Ошибка. Позвоните нам";
