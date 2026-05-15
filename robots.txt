@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /privacy.html
+Disallow: /yandex_ce58ecd9e02f516c.html
+
+Sitemap: https://xn--n1abebi.xn--d1abaqapjjur8a8de.xn--p1ai/sitemap.xml
+Host: xn--n1abebi.xn--d1abaqapjjur8a8de.xn--p1ai
+
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&gclid&fbclid
